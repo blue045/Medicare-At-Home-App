@@ -129,7 +129,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             TextFormField(controller: quantity, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: 'Quantity'), validator: _required),
             const SizedBox(height: 18),
             DropdownButtonFormField<String>(
-              value: paymentMethod,
+              initialValue: paymentMethod,
               decoration: const InputDecoration(labelText: 'Payment Method'),
               items: const [
                 DropdownMenuItem(value: 'cod', child: Text('Cash on Delivery')),
@@ -140,7 +140,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             if (paymentMethod == 'cod') ...[
               const SizedBox(height: 12),
               DropdownButtonFormField<String>(
-                value: deliveryPaymentMethod,
+                initialValue: deliveryPaymentMethod,
                 decoration: const InputDecoration(labelText: 'Pay Delivery Fee With'),
                 items: const [
                   DropdownMenuItem(value: 'bkash', child: Text('bKash delivery fee')),

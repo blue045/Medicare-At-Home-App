@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 18),
                     Text('${settings.heroHighlight}\n${settings.heroTitleLine}', style: Theme.of(context).textTheme.displaySmall?.copyWith(color: Colors.white, fontWeight: FontWeight.w900, height: 1.08)),
                     const SizedBox(height: 16),
-                    Text(settings.description, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white.withOpacity(.92), height: 1.65)),
+                    Text(settings.description, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white.withValues(alpha: .92), height: 1.65)),
                     const SizedBox(height: 22),
                     Row(
                       children: [

@@ -74,7 +74,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
-        actions: [IconButton(onPressed: () async { await state.logout(); if (mounted) Navigator.pop(context); }, icon: const Icon(Icons.logout))],
+        actions: [
+          IconButton(
+            onPressed: () async {
+              final navigator = Navigator.of(context);
+              await state.logout();
+              if (!mounted) return;
+              navigator.pop();
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
       ),
       body: FutureBuilder<Map<String, dynamic>>(
         future: future,

@@ -52,7 +52,7 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
               if (services.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
-                  value: service.isEmpty ? null : service,
+                  initialValue: service.isEmpty ? null : service,
                   decoration: const InputDecoration(labelText: 'Filter by service'),
                   items: [const DropdownMenuItem(value: '', child: Text('All services')), ...services.map((s) => DropdownMenuItem(value: s, child: Text(s)))],
                   onChanged: (v) => setState(() => service = v ?? ''),
