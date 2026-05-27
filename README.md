@@ -85,7 +85,7 @@ flutter run --dart-define=API_BASE_URL=https://your-site.pages.dev
 Example:
 
 ```bash
-flutter run --dart-define=API_BASE_URL=https://medicare-at-home.pages.dev
+flutter run --dart-define=API_BASE_URL=https://medicareathome.pages.dev
 ```
 
 For release APK:
@@ -191,3 +191,15 @@ Workflow file:
 ```
 
 After GitHub Actions finishes, download the APK from the workflow Artifacts section.
+
+## GitHub Android build API URL fix
+
+The release APK must be built with your deployed Cloudflare Pages URL. The included workflow sets:
+
+```yaml
+env:
+  API_BASE_URL: https://medicareathome.pages.dev
+```
+
+If your site uses a different URL, edit `.github/workflows/build-android.yml` and replace that value with your real Cloudflare Pages URL. The workflow also adds Android `INTERNET` permission before building, so the release APK can call the API.
+

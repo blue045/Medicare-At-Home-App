@@ -1,7 +1,7 @@
 class AppConfig {
   static const String apiBaseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'https://your-cloudflare-pages-domain.pages.dev',
+    defaultValue: 'https://medicareathome.pages.dev',
   );
 
   static Uri websiteUri([String path = '/']) {

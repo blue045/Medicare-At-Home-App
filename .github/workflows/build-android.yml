@@ -11,6 +11,11 @@ jobs:
   build-android:
     runs-on: ubuntu-latest
 
+    # IMPORTANT: Change this to your real Cloudflare Pages website URL if different.
+    # Example: https://your-project-name.pages.dev
+    env:
+      API_BASE_URL: https://medicareathome.pages.dev
+
     steps:
       - name: Checkout project
         uses: actions/checkout@v4
@@ -30,6 +35,22 @@ jobs:
       - name: Remove generated default Flutter test
         run: rm -rf test
 
+      - name: Add Android internet permission
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          manifest = Path('android/app/src/main/AndroidManifest.xml')
+          text = manifest.read_text()
+          permission = '    <uses-permission android:name="android.permission.INTERNET" />\n'
+          if 'android.permission.INTERNET' not in text:
+              text = text.replace(
+                  '<manifest xmlns:android="http://schemas.android.com/apk/res/android">',
+                  '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n' + permission,
+                  1,
+              )
+          manifest.write_text(text)
+          PY
+
       - name: Install dependencies
         run: flutter pub get
 
@@ -37,7 +58,7 @@ jobs:
         run: flutter analyze --no-fatal-infos --no-fatal-warnings
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release --dart-define=API_BASE_URL=${{ env.API_BASE_URL }}
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
