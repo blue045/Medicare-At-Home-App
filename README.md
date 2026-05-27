@@ -178,6 +178,7 @@ The included workflow does this automatically:
 
 ```bash
 flutter create --platforms=android --project-name medicare_at_home_flutter --org com.medicareathome .
+rm -rf test
 flutter pub get
 flutter analyze --no-fatal-infos --no-fatal-warnings
 flutter build apk --release

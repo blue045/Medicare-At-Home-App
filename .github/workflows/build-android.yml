@@ -27,6 +27,9 @@ jobs:
       - name: Generate Android Gradle project
         run: flutter create --platforms=android --project-name medicare_at_home_flutter --org com.medicareathome .
 
+      - name: Remove generated default Flutter test
+        run: rm -rf test
+
       - name: Install dependencies
         run: flutter pub get
 
