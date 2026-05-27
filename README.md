@@ -169,3 +169,24 @@ Good next steps:
 3. Add push notifications using Firebase Cloud Messaging.
 4. Add native admin screens if you really want admin inside the app.
 5. Add app icon and splash screen.
+
+## GitHub Actions Android Build Fix
+
+This project contains Dart/Flutter source code only. GitHub must generate the missing Android Gradle scaffold before building the APK.
+
+The included workflow does this automatically:
+
+```bash
+flutter create --platforms=android --project-name medicare_at_home_flutter --org com.medicareathome .
+flutter pub get
+flutter analyze --no-fatal-infos --no-fatal-warnings
+flutter build apk --release
+```
+
+Workflow file:
+
+```text
+.github/workflows/build-android.yml
+```
+
+After GitHub Actions finishes, download the APK from the workflow Artifacts section.

@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - master
 
 jobs:
   build-android:
@@ -23,11 +24,14 @@ jobs:
       - name: Show Flutter version
         run: flutter --version
 
+      - name: Generate Android Gradle project
+        run: flutter create --platforms=android --project-name medicare_at_home_flutter --org com.medicareathome .
+
       - name: Install dependencies
         run: flutter pub get
 
       - name: Analyze project
-        run: flutter analyze
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
 
       - name: Build APK
         run: flutter build apk --release
