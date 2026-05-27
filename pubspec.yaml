@@ -1,5 +1,5 @@
 name: medicare_at_home_flutter
-description: Native Flutter mobile app for the Medicare At Home website backend.
+description: Android app for the public Medicare At Home website and backend.
 publish_to: 'none'
 version: 1.0.0+1
 

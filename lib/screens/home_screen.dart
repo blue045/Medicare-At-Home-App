@@ -6,6 +6,7 @@ import '../models/models.dart';
 import '../widgets/common.dart';
 import 'ambulance_screen.dart';
 import 'profile_screen.dart';
+import 'services_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -79,12 +80,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 16),
                     Text(settings.description, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white.withValues(alpha: .92), height: 1.65)),
                     const SizedBox(height: 22),
-                    Row(
-                      children: [
-                        Expanded(child: ElevatedButton.icon(onPressed: () => launchWhatsapp(settings.whatsapp), icon: const Icon(Icons.chat), label: const Text('WhatsApp'))),
-                        const SizedBox(width: 12),
-                        Expanded(child: OutlinedButton.icon(style: OutlinedButton.styleFrom(foregroundColor: Colors.white, side: const BorderSide(color: Colors.white70)), onPressed: () => Navigator.pushNamed(context, AmbulanceScreen.route), icon: const Icon(Icons.emergency), label: const Text('Ambulance'))),
-                      ],
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton.icon(
+                        onPressed: () => launchWhatsapp(settings.whatsapp),
+                        icon: const Icon(Icons.chat_bubble_outline),
+                        label: const Text('WhatsApp Appointment', maxLines: 1, overflow: TextOverflow.ellipsis),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          side: const BorderSide(color: Colors.white70),
+                        ),
+                        onPressed: () => Navigator.pushNamed(context, AmbulanceScreen.route),
+                        icon: const Icon(Icons.emergency_outlined),
+                        label: const Text('Order Ambulance', maxLines: 1, overflow: TextOverflow.ellipsis),
+                      ),
                     ),
                   ],
                 ),
@@ -107,7 +122,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               const SizedBox(height: 32),
-              const AppSectionHeader(kicker: 'Services', title: 'Home care support', subtitle: 'Tap WhatsApp to confirm availability before booking.'),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  const Expanded(child: AppSectionHeader(kicker: 'Services', title: 'Home care support', subtitle: 'Tap WhatsApp to confirm availability before booking.')),
+                  TextButton(
+                    onPressed: () => Navigator.pushNamed(context, ServicesScreen.route),
+                    child: const Text('View all'),
+                  ),
+                ],
+              ),
               const SizedBox(height: 18),
               ...settings.serviceTags.map((service) {
                 final icon = settings.serviceIcons[service]?.toString() ?? '✚';

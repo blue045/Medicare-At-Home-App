@@ -79,11 +79,24 @@ class _AmbulanceScreenState extends State<AmbulanceScreen> {
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       Text(settings.ambulanceDescription, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white, height: 1.65)),
                       const SizedBox(height: 18),
-                      Row(children: [
-                        Expanded(child: OutlinedButton.icon(style: OutlinedButton.styleFrom(foregroundColor: Colors.white, side: const BorderSide(color: Colors.white70)), onPressed: () => launchPhone(settings.ambulancePhone), icon: const Icon(Icons.call), label: const Text('Call'))),
-                        const SizedBox(width: 12),
-                        Expanded(child: ElevatedButton.icon(onPressed: () => launchWhatsapp(settings.ambulanceWhatsapp, 'I need ambulance support.'), icon: const Icon(Icons.chat), label: const Text('WhatsApp'))),
-                      ]),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton.icon(
+                          onPressed: () => launchWhatsapp(settings.ambulanceWhatsapp, 'I need ambulance support.'),
+                          icon: const Icon(Icons.chat_bubble_outline),
+                          label: const Text('WhatsApp Ambulance Support', maxLines: 1, overflow: TextOverflow.ellipsis),
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      SizedBox(
+                        width: double.infinity,
+                        child: OutlinedButton.icon(
+                          style: OutlinedButton.styleFrom(foregroundColor: Colors.white, side: const BorderSide(color: Colors.white70)),
+                          onPressed: () => launchPhone(settings.ambulancePhone),
+                          icon: const Icon(Icons.call_outlined),
+                          label: const Text('Call Ambulance Number', maxLines: 1, overflow: TextOverflow.ellipsis),
+                        ),
+                      ),
                     ]),
                   ),
                 const SizedBox(height: 18),

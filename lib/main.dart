@@ -7,10 +7,12 @@ import 'core/app_theme.dart';
 import 'screens/ambulance_screen.dart';
 import 'screens/auth_screen.dart';
 import 'screens/blood_screen.dart';
+import 'screens/contact_screen.dart';
 import 'screens/doctors_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/more_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/services_screen.dart';
 import 'screens/store_screen.dart';
 
 Future<void> main() async {
@@ -43,6 +45,8 @@ class MedicareApp extends StatelessWidget {
           AuthScreen.route: (_) => const AuthScreen(),
           ProfileScreen.route: (_) => const ProfileScreen(),
           AmbulanceScreen.route: (_) => const AmbulanceScreen(),
+          ServicesScreen.route: (_) => const ServicesScreen(),
+          ContactScreen.route: (_) => const ContactScreen(),
         },
       ),
     );
